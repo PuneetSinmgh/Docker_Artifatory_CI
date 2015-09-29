@@ -34,14 +34,20 @@
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-firefox-driver</artifactId>
-			<version>2.42.2</version>
+			<version>2.44.0</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-server</artifactId>
-			<version>2.42.2</version>
+			<version>2.44.0</version>
 		</dependency>
+		<dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-java</artifactId>
+	<version>2.44.0</version>
+</dependency>
+		
 
 		<!-- <dependency> <groupId>com.fasterxml.jackson.core</groupId> <artifactId>jackson-core</artifactId> 
 			<version>2.2.1</version> <scope>test</scope> </dependency> <dependency> <groupId>com.fasterxml.jackson.core</groupId> 
@@ -384,12 +390,32 @@
 		<profile>
 			<id>gatling</id>
 			<build>
-				<plugins>
-			<plugin>
-			    <groupId>io.gatling</groupId>
-			    <artifactId>gatling-maven-plugin</artifactId>
-			    <version>2.0.0-M3a</version>
-			</plugin>
+			<plugins>
+			 <plugin>
+                    <groupId>io.gatling</groupId>
+                    <artifactId>gatling-maven-plugin</artifactId>
+                    <version>2.1.7</version>
+                    <configuration>
+                    	<configFolder>src/test/resources</configFolder>
+                        <dataFolder>src/test/resources/data</dataFolder>
+                        <resultsFolder>target/gatling/results</resultsFolder>
+                        <requestBodiesFolder>src/test/resources/request-bodies</requestBodiesFolder>
+                        <simulationsFolder>src/main/java/computerdatabase</simulationsFolder>
+                    </configuration>
+                    
+					<executions>
+					    <execution>
+					      <id>execution1</id>
+					      <goals>
+					        <goal>execute</goal>
+					      </goals>
+					      <configuration>
+					        <simulationClass>EMSHome</simulationClass>
+					      </configuration>
+					     </execution>
+					  </executions>
+                    
+	        </plugin>
 			</plugins>
 			</build>
 		</profile>

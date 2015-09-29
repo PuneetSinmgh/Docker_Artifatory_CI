@@ -14,16 +14,19 @@ public class EmployeeDeleteSeleniumTest {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://172.27.59.18:8090/EmployeeApplication/list";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+       driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
   public void testEdit() throws Exception {
-    driver.get(baseUrl + "");
-   
-    driver.findElement(By.xpath("(//a[contains(text(),'delete')])[1]")).click();
-
+	  driver.get("http://localhost:5050/EmployeeApplicationSprint4-1.0-SNAPSHOT/");
+		
+		driver.findElement(By.linkText("List Employees")).click();
+	
+		driver.findElement(By.xpath("(//a[contains(text(),'delete')])[5]")).click();
+		
+		driver.findElement(By.linkText("Back to Main")).click();
+		
    
   }
 

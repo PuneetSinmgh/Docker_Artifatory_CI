@@ -15,31 +15,26 @@ public class EmployeeServiceImpl  implements EmployeeService{
 	@Autowired
 	private EmployeeDAO employeeDAO;
 	
-	@Override
-    @Transactional
+	@Transactional
 	public void addEmployee(EmployeeCommand employee) {
 		employeeDAO.addEmployee(employee);
 	}
 
-	@Override
-    @Transactional
+	@Transactional
 	public void deleteEmployee(Integer employeeId) {
 		employeeDAO.deleteEmployee(employeeId);
 	}
 	
-	@Override
-    @Transactional
+	@Transactional
 	public EmployeeCommand getEmployeebyId(Integer employeeId) {
 		return employeeDAO.getEmployeebyId(employeeId);
 	}
 
-	@Override
 	@Transactional
     public List<EmployeeCommand> listContact() {
         return employeeDAO.listContact();
     }
 
-	@Override
 	@Transactional
 	public void updateEmployee(EmployeeCommand employeeCommand) {
 		employeeDAO.updateEmployee(employeeCommand);
